@@ -1,0 +1,154 @@
+# ====================================
+# Docker构建上下文排除规则
+# ====================================
+# 说明：这个文件告诉Docker在构建镜像时忽略哪些文件
+# 好处：1. 减小构建上下文大小，加快docker build速度
+#       2. 减小最终镜像大小
+#       3. 避免将敏感信息打包到镜像中
+
+# ====================================
+# Python缓存和编译文件
+# ====================================
+# 这些文件是运行时自动生成的，无需打包到镜像
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Pytest缓存
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# MyPy缓存
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ====================================
+# 运行时目录（通过volume挂载）
+# ====================================
+# 说明：这些目录会通过docker-compose.yml的volumes挂载
+# 打包到镜像中会浪费空间且数据会被覆盖
+
+# 输出目录（AI生成内容）
+outputs/*
+!outputs/.gitkeep
+
+# 模型缓存（通过主机的~/.cache/huggingface挂载）
+models/*
+!models/.gitkeep
+
+# ====================================
+# Benchmark数据和结果
+# ====================================
+# 数据集和评估结果都通过volume挂载，不打包到镜像
+
+# Image-Bench
+benchmarks/Image-Bench/results/*
+benchmarks/Image-Bench/dataset/*
+!benchmarks/Image-Bench/dataset/.gitkeep
+!benchmarks/Image-Bench/results/.gitkeep
+
+# Audio-Bench
+benchmarks/Audio-Bench/results/*
+benchmarks/Audio-Bench/dataset/*
+
+# Video-Bench
+benchmarks/Video-Bench/results/*
+benchmarks/Video-Bench/dataset/*
+
+# Text-Bench
+benchmarks/Text-Bench/results/*
+benchmarks/Text-Bench/dataset/*
+
+# ====================================
+# 版本控制
+# ====================================
+# .git目录很大（可能数百MB），且镜像中不需要
+.git/
+.gitignore
+.gitattributes
+.gitmodules
+
+# Git子模块会在Dockerfile中通过git submodule命令初始化
+# 但.git/目录本身不需要
+
+# ====================================
+# 开发工具配置
+# ====================================
+# IDE和编辑器配置文件，镜像中不需要
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Claude Code配置
+.claude/
+
+# ====================================
+# 日志和临时文件
+# ====================================
+*.log
+*.tmp
+*.temp
+*.bak
+.cache/
+
+# ====================================
+# 环境配置文件
+# ====================================
+# 包含敏感信息（API密钥等），不应打包到镜像
+.env
+.env.local
+.env.*.local
+
+# ====================================
+# 文档（镜像内不需要）
+# ====================================
+# 文档会占用空间，且用户通常在GitHub上查看
+docs/
+*.md
+# 例外：保留README.md，方便容器内查看项目说明
+!README.md
+!CLAUDE.md
+
+# ====================================
+# CI/CD配置
+# ====================================
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# ====================================
+# Docker相关
+# ====================================
+# 避免递归包含
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# ====================================
+# 其他大文件
+# ====================================
+# 如果你有其他大文件（如视频、音频样本），添加到这里
+# 示例：
+# *.mp4
+# *.wav
+# *.avi
+
+# 日志文件
+example.log

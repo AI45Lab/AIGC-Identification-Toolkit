@@ -1,0 +1,44 @@
+# W-Bench VideoSeal Distortion Benchmark Configuration
+
+# Watermark settings
+watermark:
+  algorithm: videoseal
+  device: cuda  # or 'cpu'
+  message: "W-Bench-Test-2025"  # Fixed message for reproducibility
+  lowres_attenuation: true
+
+  # VideoSeal extraction parameters (optimized from CLAUDE.md)
+  extract:
+    replicate: 32    # Multi-frame replication for stability
+    chunk_size: 16   # Balanced efficiency/accuracy
+
+# Attack settings
+attacks:
+  types: [brightness, contrast, blurring, noise, compression]
+
+  # Test 5 strength levels per attack (from VINE's distortions.py)
+  strengths:
+    brightness: [1.2, 1.4, 1.6, 1.8, 2.0]      # Factor multiplier
+    contrast: [1.2, 1.4, 1.6, 1.8, 2.0]        # Factor multiplier
+    blurring: [1, 3, 5, 7, 9]                  # Gaussian kernel size
+    noise: [0.02, 0.04, 0.06, 0.08, 0.1]       # Gaussian noise std
+    compression: [10, 25, 40, 55, 70]          # JPEG quality (lower = more compression)
+
+# Dataset settings
+dataset:
+  name: DISTORTION_1K
+  path: benchmarks/Image-Bench/dataset/W-Bench/DISTORTION_1K/image
+  num_images: 1000  # Full Image-Bench distortion subset
+
+  # Optional: limit for testing
+  # max_images: 10  # Uncomment to test with only 10 images
+
+# Output settings
+output:
+  base_dir: benchmarks/Image-Bench/results/videoseal_distortion
+  save_watermarked: true
+  save_attacked: true
+  save_metrics_json: true
+
+  # Optional: save intermediate results
+  save_quality_metrics_per_image: false  # Set to true for detailed analysis

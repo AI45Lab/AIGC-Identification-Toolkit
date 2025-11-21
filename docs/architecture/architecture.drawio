@@ -1,0 +1,345 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Watermark System Architecture" id="watermark-arch">
+    <mxGraphModel dx="1722" dy="1001" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="layer1" value="Web界面层 (Presentation Layer)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="50" width="1100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ui" value="Web界面 - index.html" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="80" y="80" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="js" value="JavaScript前端逻辑" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="515" y="80" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rest" value="REST API接口" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="950" y="80" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer2" value="API接口层 (API Gateway Layer)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="160" width="1100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="app" value="app.py - Flask应用" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="80" y="190" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="task" value="任务状态管理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="370" y="190" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="file" value="文件服务器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="660" y="190" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cand" value="候选消息管理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="950" y="190" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer3" value="统一接口层 (Unified Interface Layer)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="270" width="1100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tool" value="WatermarkTool - 高级API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="80" y="300" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="engine" value="UnifiedWatermarkEngine - 核心引擎" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="490" y="300" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="config" value="配置管理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="950" y="300" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer4" value="模态处理层 (Modality Processing Layer)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="380" width="1100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="textWm" value="TextWatermark" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="80" y="410" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="imageWm" value="ImageWatermark" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="370" y="410" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="audioWm" value="AudioWatermark" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="660" y="410" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="videoWm" value="VideoWatermark" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="950" y="400" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer5" value="算法实现层 (Algorithm Implementation Layer)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="490" width="1100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="credidCore" value="CredID核心算法" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="80" y="540" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="videosealImg" value="VideoSeal图像水印" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="515" y="540" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="prc" value="PRC-Watermark" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="298" y="540" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="videosealCore" value="VideoSeal核心算法" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="950" y="540" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="audioseal" value="AudioSeal算法" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="733" y="540" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer6" value="底层支持层 (Infrastructure Layer)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#558b2f;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="50" y="640" width="1100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="modelMgr" value="模型管理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#558b2f;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="80" y="670" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cache" value="模型缓存" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#558b2f;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="298" y="670" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="device" value="设备管理 - CPU/CUDA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#558b2f;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="515" y="670" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" value="文件存储系统" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#558b2f;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="733" y="670" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="configFiles" value="配置文件系统" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#558b2f;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="950" y="670" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="visibleMark" value="VisibleMarkProcessor&#xa;显式标识处理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="270" y="750" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="用户交互" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="ui" target="js" edge="1">
+          <mxGeometry x="0.0714" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="100" />
+              <mxPoint x="260" y="100" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="API调用" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="js" target="rest" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="Flask路由" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="rest" target="app" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="150" />
+              <mxPoint x="160" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="任务管理" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="app" target="task" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="文件管理" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="task" target="file" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="候选消息" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="file" target="cand" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="调用" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="app" target="tool" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="依赖" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="tool" target="engine" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="配置管理" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="engine" target="config" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" value="文本" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="engine" target="textWm" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="360" />
+              <mxPoint x="160" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge11" value="图像" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="engine" target="imageWm" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="360" />
+              <mxPoint x="350" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge12" value="音频" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="engine" target="audioWm" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="360" />
+              <mxPoint x="740" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge13" value="视频" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="360" />
+              <mxPoint x="1030" y="360" />
+            </Array>
+            <mxPoint x="600" y="340" as="sourcePoint" />
+            <mxPoint x="1030" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="textWm" target="credidCore" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge15" value="默认后端" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="imageWm" target="videosealImg" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="480" />
+              <mxPoint x="595" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge16" value="可选后端" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="imageWm" target="prc" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="480" />
+              <mxPoint x="378" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="audioWm" target="audioseal" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="480" />
+              <mxPoint x="813" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" parent="1" source="videoWm" target="videosealCore" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="520" />
+              <mxPoint x="1030" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="credidCore" target="modelMgr" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="610" />
+              <mxPoint x="160" y="610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="620" />
+              <mxPoint x="160" y="620" />
+            </Array>
+            <mxPoint x="1030" y="580" as="sourcePoint" />
+            <mxPoint x="160.00000000000023" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="813" y="620" />
+              <mxPoint x="160" y="620" />
+            </Array>
+            <mxPoint x="813" y="580" as="sourcePoint" />
+            <mxPoint x="160.00000000000023" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="modelMgr" target="cache" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cache" target="device" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ff6b6b;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="storage" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="250" />
+              <mxPoint x="900" y="250" />
+              <mxPoint x="900" y="630" />
+              <mxPoint x="813" y="630" />
+            </Array>
+            <mxPoint x="750" y="230" as="sourcePoint" />
+            <mxPoint x="700" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#ff6b6b;strokeWidth=2;" parent="1" source="config" target="configFiles" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="340" />
+              <mxPoint x="1040" y="360" />
+              <mxPoint x="1130" y="360" />
+              <mxPoint x="1130" y="630" />
+              <mxPoint x="1030" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="visibleMarkEdge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.461;exitY=0.954;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="589" y="621" />
+              <mxPoint x="160" y="621" />
+            </Array>
+            <mxPoint x="588.7600000000002" y="579.1599999999999" as="sourcePoint" />
+            <mxPoint x="160.00000000000023" y="671" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="visibleMarkEdge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.461;exitY=0.954;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="580" />
+              <mxPoint x="380" y="622" />
+              <mxPoint x="160" y="622" />
+              <mxPoint x="160" y="672" />
+            </Array>
+            <mxPoint x="379" y="580" as="sourcePoint" />
+            <mxPoint x="160" y="672" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="visibleMarkEdge1" value="可选合规标识" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;strokeColor=#66bb6a;dashed=1;strokeWidth=2;" parent="1" source="textWm" target="visibleMark" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="470" />
+              <mxPoint x="160" y="730" />
+              <mxPoint x="360" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="visibleMarkEdge2" value="可选合规标识" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;strokeColor=#66bb6a;dashed=1;strokeWidth=2;" parent="1" source="imageWm" target="visibleMark" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="470" />
+              <mxPoint x="450" y="730" />
+              <mxPoint x="360" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="visibleMarkEdge3" value="可选合规标识" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;strokeColor=#66bb6a;dashed=1;strokeWidth=2;" parent="1" source="audioWm" target="visibleMark" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="470" />
+              <mxPoint x="740" y="730" />
+              <mxPoint x="360" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="visibleMarkEdge4" value="可选合规标识" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;strokeColor=#66bb6a;dashed=1;strokeWidth=2;" parent="1" source="videoWm" target="visibleMark" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="460" />
+              <mxPoint x="1030" y="730" />
+              <mxPoint x="360" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="configToVisibleMark" value="标识配置" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;strokeColor=#4caf50;strokeWidth=2;" parent="1" source="config" target="visibleMark" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="350" />
+              <mxPoint x="1160" y="350" />
+              <mxPoint x="1160" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fileToVisibleMark" value="文件处理" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;strokeColor=#4caf50;strokeWidth=2;" parent="1" source="file" target="visibleMark" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="240" />
+              <mxPoint x="30" y="240" />
+              <mxPoint x="30" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

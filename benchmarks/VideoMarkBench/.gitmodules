@@ -1,0 +1,12 @@
+[submodule "REVMark"]
+	path = REVMark
+	url = https://github.com/yulinsysu/REVMark.git
+[submodule "StegaStamp"]
+	path = StegaStamp
+	url = https://github.com/tancik/StegaStamp.git
+[submodule "VideoSeal"]
+	path = VideoSeal
+	url = https://github.com/facebookresearch/videoseal.git
+[submodule "VideoShield"]
+	path = VideoShield
+	url = https://github.com/hurunyi/VideoShield.git

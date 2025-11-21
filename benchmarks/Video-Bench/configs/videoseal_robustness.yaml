@@ -1,0 +1,70 @@
+# VideoSeal 视频水印鲁棒性评估配置
+# 严格遵循 VideoMarkBench 论文参数设置
+
+watermark:
+  algorithm: videoseal
+  device: cuda
+  message: "VideoMarkBench-2025"
+  nbits: 256                             # 256-bit水印（匹配y_256b_img.pth模型）
+  lowres_attenuation: true               # 低分辨率衰减优化
+
+  # VideoSeal检测参数（完全对齐VideoMarkBench源码）
+  extract:
+    aggregation_method: "detection_threshold"  # 使用二项检验聚合策略
+    tau_ba: 0.69921875                        # 179/256 帧级BA阈值（保持67/96比例）
+    binom_p: 0.0000661                        # 随机猜测下单帧检测成功概率
+    binom_threshold: 0.0001                   # 显著性水平 10e-4
+    chunk_size: 16                            # 分块检测优化
+
+# 攻击配置（7种Common Perturbations，暂时跳过MPEG4）
+attacks:
+  types:
+    - gaussian_noise
+    - gaussian_blur
+    - jpeg
+    - crop
+    # - mpeg4  # 跳过：需要临时文件处理，待后续修复
+    - frame_average
+    - frame_swap
+    - frame_remove
+
+  # 攻击强度参数（严格按照VideoMarkBench论文）
+  strengths:
+    # 图像级扰动（逐帧应用）
+    gaussian_noise: [0.01, 0.05, 0.10, 0.15, 0.20]  # 标准差 σ
+    gaussian_blur: [0.1, 0.5, 1.0, 1.5]              # 核标准差 σ（4个强度级别）
+    jpeg: [90, 80, 60, 40, 20]                       # JPEG质量因子（越小越强）
+    crop: [0.98, 0.96, 0.94, 0.92, 0.90]             # 保留比例（裁剪后resize回原分辨率）
+
+    # 视频级扰动（时间维度）
+    mpeg4: [1, 10, 20, 30, 40]                       # CRF值（越大压缩越强，与JPEG相反）
+    frame_average: [1, 2, 3, 4, 5]                   # 窗口大小N（N=1表示无变化）
+    frame_swap: [0.00, 0.05, 0.10, 0.15, 0.20]       # 帧交换概率p
+    frame_remove: [0.00, 0.05, 0.10, 0.15, 0.20]     # 帧删除概率p
+
+# 数据集配置
+dataset:
+  path: benchmarks/Video-Bench/dataset/VideoMarkBench  # Video-Bench测试数据集路径
+  format: pt                                            # PyTorch tensor格式（高效无损）
+  max_videos: null                                      # null表示使用所有视频，可限制数量用于快速测试
+
+# 输出配置
+output:
+  base_dir: benchmarks/Video-Bench/results/videoseal_robustness
+  save_format: mp4                                  # 中间文件使用MP4格式（压缩优化，50x存储节省）
+  export_samples: true                              # 导出少量样本为MP4用于可视化
+  num_export_samples: 5                             # 每种攻击导出5个样本
+
+# 评估指标配置
+metrics:
+  # 视觉质量指标
+  quality:
+    compute_psnr: true                              # 峰值信噪比
+    compute_ssim: true                              # 结构相似性
+    compute_tLP: true                               # temporal LPIPS（时间一致性）
+
+  # 检测性能指标
+  detection:
+    compute_fnr: true                               # 漏报率（False Negative Rate）
+    compute_bit_accuracy: true                      # 比特准确率
+    compute_avg_confidence: true                    # 平均检测置信度

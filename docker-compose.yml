@@ -1,0 +1,177 @@
+# ====================================
+# AIGC-Identification-Toolkit Docker Compose配置
+# 多模态水印Benchmark系统
+# ====================================
+
+version: '3.8'
+
+services:
+  # ====================================
+  # 主服务：toolkit
+  # ====================================
+  toolkit:
+    container_name: aigc-watermark-toolkit
+    build:
+      context: .                  # 使用当前目录作为构建上下文
+      dockerfile: Dockerfile      # 使用当前目录的Dockerfile
+
+    image: aigc-watermark-toolkit:latest
+
+    # ====================================
+    # GPU支持（NVIDIA Docker）
+    # ====================================
+    # 重要：需要先安装nvidia-docker2
+    # 安装命令：sudo apt-get install -y nvidia-docker2 && sudo systemctl restart docker
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all          # 使用所有可用GPU（单卡或多卡）
+              capabilities: [gpu] # 启用GPU计算能力
+
+    # ====================================
+    # 环境变量配置
+    # ====================================
+    environment:
+      # ====== Hugging Face模型缓存配置（核心！）======
+      # 说明：这些环境变量告诉项目的PathManager去哪里找模型
+      #
+      # HF_HOME: Hugging Face总缓存目录
+      # - 容器内路径：/cache/huggingface
+      # - 对应主机路径：/fs-computility/wangxuhong/limeilin/.cache/huggingface
+      # - 项目的src/utils/path_manager.py会读取这个变量
+      - HF_HOME=/cache/huggingface
+
+      # HF_HUB_CACHE: Hugging Face Hub模型缓存
+      # - 存储从huggingface.co下载的模型（如Stable Diffusion、Mistral等）
+      # - 格式：models--<org>--<model-name>/snapshots/<hash>/
+      - HF_HUB_CACHE=/cache/huggingface/hub
+
+      # TRANSFORMERS_CACHE: Transformers库专用缓存
+      # - 存储transformers.AutoModel加载的模型
+      - TRANSFORMERS_CACHE=/cache/huggingface/transformers
+
+      # ====== Bark TTS缓存配置 ======
+      # Bark模型缓存（如果使用音频生成功能）
+      # 注意：Bark约5GB，首次使用会自动下载
+      - BARK_CACHE_DIR=/cache/bark
+
+      # ====== GPU配置 ======
+      - CUDA_VISIBLE_DEVICES=0
+
+      # ====== Python配置 ======
+      # PYTHONUNBUFFERED: 禁用Python输出缓冲
+      # 为什么需要？实时查看print输出，方便调试
+      - PYTHONUNBUFFERED=1
+
+      # PYTHONPATH: Python模块搜索路径
+      # 确保 `from src.xxx import` 能正常工作
+      - PYTHONPATH=/app
+
+      # ====== 可选：离线模式 ======
+      # 如果网络不稳定或没有网络，取消下面两行的注释
+      # TRANSFORMERS_OFFLINE=1: 禁止transformers库联网
+      # HF_HUB_OFFLINE=1: 禁止huggingface_hub库联网
+      # - TRANSFORMERS_OFFLINE=1
+      # - HF_HUB_OFFLINE=1
+
+      # ====== 可选：国内镜像加速 ======
+      # 如果在中国大陆，取消下面注释可以加速模型下载
+      # - HF_ENDPOINT=https://hf-mirror.com
+
+    # ====================================
+    # Volume挂载（核心配置）
+    # ====================================
+    # 格式：<主机路径>:<容器路径>[:选项]
+    # 选项：ro=只读（read-only），rw=读写（默认）
+    volumes:
+      # ====== 模型缓存目录（最重要！）======
+      # 说明：将主机的Hugging Face缓存挂载到容器
+      # - 主机路径：/fs-computility/wangxuhong/limeilin/.cache/huggingface
+      #   这是你实际存储AI模型的地方（Stable Diffusion、Mistral等）
+      # - 容器路径：/cache/huggingface
+      #   容器内通过HF_HOME环境变量访问
+      # - 好处：
+      #   1. 不重复下载模型（直接用现有的）
+      #   2. 多个容器可以共享同一份模型
+      #   3. 节省磁盘空间
+      - /fs-computility/wangxuhong/limeilin/.cache/huggingface:/cache/huggingface
+
+      # ====== 配置文件（只读挂载）======
+      # 说明：挂载项目配置文件，修改后立即生效
+      # - 主机路径：./config（相对路径）
+      # - 容器路径：/app/config
+      # - ro（read-only）：防止容器内误修改配置文件
+      # - 包含文件：default_config.yaml（唯一的统一配置文件）
+      - ./config:/app/config:ro
+
+      # ====== 源代码（开发模式）======
+      # 说明：挂载src/目录，支持代码热更新
+      # - 好处：在主机上修改代码后，容器内立即生效，无需重新构建镜像
+      # - 适用场景：开发调试、快速迭代
+      # - 注意：修改后Python模块缓存可能需要重启容器
+      - ./src:/app/src
+
+      # ====== 测试代码 ======
+      # 说明：挂载tests/目录，方便运行和修改测试
+      - ./tests:/app/tests
+
+      # ====== 输出目录（持久化）======
+      # 说明：项目运行时动态创建的outputs/目录
+      # - 用途：存储AI生成的内容（图像、音频、视频、文本）
+      # - 为什么挂载？持久化输出结果，容器删除后数据不丢失
+      # - 项目代码：src/utils/path_manager.py中的get_project_output_dir()
+      - ./outputs:/app/outputs
+
+      # ====== Benchmark数据集（只读）======
+      # 说明：Image-Bench的W-Bench数据集
+      # - 主机路径：./benchmarks/Image-Bench/dataset
+      # - 内容：DISTORTION_1K（1000张图像 × 25种攻击配置）
+      # - 大小：约191MB
+      # - ro（read-only）：数据集不应被修改
+      # - 注意：如果没有数据集，运行benchmark会报错（可跳过此挂载）
+      - ./benchmarks/Image-Bench/dataset:/app/benchmarks/Image-Bench/dataset:ro
+
+      # ====== Benchmark评估结果（持久化）======
+      # 说明：存储benchmark评估的输出结果
+      # - 内容：metrics.json、watermarked/、attacked/等
+      # - 为什么挂载？持久化评估结果，方便分析和可视化
+      - ./benchmarks/Image-Bench/results:/app/benchmarks/Image-Bench/results
+
+      # ====== 可选：其他benchmark结果 ======
+      # 如果运行音频、视频、文本benchmark，取消下面注释
+      # - ./benchmarks/Audio-Bench/results:/app/benchmarks/Audio-Bench/results
+      # - ./benchmarks/Video-Bench/results:/app/benchmarks/Video-Bench/results
+      # - ./benchmarks/Text-Bench/results:/app/benchmarks/Text-Bench/results
+
+    # ====================================
+    # 工作目录
+    # ====================================
+    working_dir: /app
+
+    # ====================================
+    # 交互式终端
+    # ====================================
+    # stdin_open: 保持标准输入打开（相当于 docker run -i）
+    # tty: 分配伪终端（相当于 docker run -t）
+    # 合起来就是 docker run -it，支持交互式bash
+    stdin_open: true
+    tty: true
+
+    # ====================================
+    # 网络配置
+    # ====================================
+    network_mode: bridge  # 默认桥接网络，允许容器访问外网
+
+    # ====================================
+    # 容器重启策略
+    # ====================================
+    # unless-stopped: 除非手动停止，否则容器总是重启
+    # 其他选项：
+    # - no: 从不自动重启（默认）
+    # - always: 总是重启
+    # - on-failure: 仅在失败时重启
+    restart: unless-stopped
+
+

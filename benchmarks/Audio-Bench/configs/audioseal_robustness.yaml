@@ -1,0 +1,132 @@
+# Audio-Bench Configuration for AudioSeal Robustness Evaluation
+#
+# This configuration defines the complete evaluation pipeline:
+# - Watermark embedding parameters
+# - Attack types and strengths (9 attacks × 5 strengths)
+# - Quality assessment settings
+# - Detection thresholds (tau_prob=0.15, tau_ba=0.1)
+
+# ============================================================================
+# Watermark Configuration
+# ============================================================================
+watermark:
+  algorithm: audioseal
+  device: cuda  # or 'cpu' for CPU-only evaluation
+  message: "Audio-Bench-Test-2025"
+  sample_rate: 16000  # AudioSeal fixed sample rate
+  message_bits: 16    # AudioSeal 16-bit message encoding
+  watermark_strength: 1.0  # Alpha parameter (0.0-2.0)
+
+  # Extraction parameters
+  extract:
+    detection_threshold: 0.5   # Detection probability binarization threshold
+    message_threshold: 0.5     # Message bit binarization threshold
+    tau_prob: 0.15             # Detection probability TPR threshold (AudioMarkBench standard)
+    tau_ba: 0.1                # Bit accuracy TPR threshold (user-adjusted from 0.875)
+
+# ============================================================================
+# Attack Configuration (9 types × 5 strengths)
+# ============================================================================
+attacks:
+  types:
+    - gaussian_noise
+    - background_noise
+    - time_stretch
+    - quantization
+    - lowpass_filter
+    - highpass_filter
+    - smooth
+    - echo
+    - mp3_compression
+
+  # Attack strength parameters (directly from AudioMarkBench)
+  strengths:
+    # Gaussian Noise: SNR in dB (higher = weaker attack)
+    gaussian_noise: [40, 30, 20, 10, 5]
+
+    # Background Noise: SNR in dB
+    background_noise: [40, 30, 20, 10, 5]
+
+    # Time Stretch: Speed factor (1.0 = original speed)
+    time_stretch: [0.8, 0.9, 1.0, 1.1, 1.2]
+
+    # Quantization: Bit levels
+    quantization: [4, 8, 16, 32, 64]
+
+    # Lowpass Filter: Cutoff frequency ratio (0-1)
+    lowpass_filter: [0.1, 0.2, 0.3, 0.4, 0.5]
+
+    # Highpass Filter: Cutoff frequency ratio (0-1)
+    highpass_filter: [0.1, 0.2, 0.3, 0.4, 0.5]
+
+    # Smooth: Window size for moving average
+    smooth: [6, 10, 14, 18, 22]
+
+    # Echo: [duration (seconds), volume (0-1)]
+    echo:
+      - [0.1, 0.1]
+      - [0.2, 0.2]
+      - [0.3, 0.3]
+      - [0.4, 0.4]
+      - [0.5, 0.5]
+
+    # MP3 Compression: Bitrate in kbps (lower = stronger attack)
+    mp3_compression: [64, 96, 128, 192, 256]
+
+# ============================================================================
+# Quality Metrics Configuration
+# ============================================================================
+quality_metrics:
+  # SNR (Signal-to-Noise Ratio) - REQUIRED
+  # Computed using AudioMarkBench's compute_snr() implementation
+  enable_snr: true
+
+  # ViSQOL (Virtual Speech Quality Objective Listener) - OPTIONAL
+  # Requires: pip install visqol (complex installation)
+  # Provides MOS-LQO score (1.0-5.0 scale)
+  enable_visqol: false
+
+  # PESQ (Perceptual Evaluation of Speech Quality) - OPTIONAL
+  # Requires: pip install pypesq
+  # Provides PESQ score (-0.5 to 4.5 scale)
+  enable_pesq: false
+
+# ============================================================================
+# Dataset Configuration
+# ============================================================================
+dataset:
+  name: audiomark
+  # Path to audio dataset directory (containing .mp3/.wav files)
+  path: benchmarks/Audio-Bench/dataset/audiomark
+  num_audios: 106     # Actual number of audios in dataset
+  max_length: 80000   # Max audio length: 5 seconds @ 16kHz
+
+  # Quick test mode (uncomment to enable)
+  # max_audios: 10    # Limit to 10 audios for fast testing
+
+# ============================================================================
+# Output Configuration
+# ============================================================================
+output:
+  base_dir: benchmarks/Audio-Bench/results/audioseal_robustness
+  save_watermarked: true        # Save watermarked audios
+  save_attacked: true           # Save attacked audios
+  save_metrics_json: true       # Save metrics.json
+  save_quality_metrics_per_audio: false  # Save per-audio quality metrics (large file)
+
+# ============================================================================
+# Usage Examples
+# ============================================================================
+# Quick test (10 audios):
+#   python benchmarks/Audio-Bench/run_benchmark.py --max_audios 10
+#
+# Full evaluation (106 audios):
+#   python benchmarks/Audio-Bench/run_benchmark.py
+#
+# CPU-only mode:
+#   Edit 'device: cpu' above, then run:
+#   python benchmarks/Audio-Bench/run_benchmark.py
+#
+# Generate radar charts from existing metrics:
+#   python benchmarks/Audio-Bench/utils/plot_radar.py \
+#     benchmarks/Audio-Bench/results/audioseal_robustness/metrics.json

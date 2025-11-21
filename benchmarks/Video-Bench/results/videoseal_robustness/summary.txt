@@ -1,0 +1,16 @@
+VideoSeal Robustness Evaluation Summary
+============================================================
+
+Quality Metrics (Watermarked vs Original):
+  PSNR:  40.59 dB
+  SSIM:  0.9796
+  tLP:   0.001427
+
+Detection Metrics (Overall):
+  FNR:           0.0456
+  Bit Accuracy:  0.9489
+  Avg Confidence: 0.7296
+
+Dataset: 20 videos
+Watermark: VideoMarkBench-2025
+Attacks: 34 configurations
