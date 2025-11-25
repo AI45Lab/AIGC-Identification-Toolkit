@@ -2,6 +2,19 @@
 # AIGC-Identification-Toolkit Docker Compose配置
 # 多模态水印Benchmark系统
 # ====================================
+#
+# 使用说明：
+# 1. 普通用户（推荐）：
+#    - 使用下面的 image 配置，直接从 DockerHub 拉取预构建镜像
+#    - 运行：docker compose up -d
+#    - 首次启动会自动下载镜像（约 8GB）
+#
+# 2. 开发者模式：
+#    - 如需修改代码或构建自定义镜像，取消注释 build 部分，注释 image 行
+#    - 运行：docker compose build && docker compose up -d
+#    - 源代码已通过 volume 挂载，修改后容器内立即生效
+#
+# ====================================
 
 version: '3.8'
 
@@ -11,11 +24,14 @@ services:
   # ====================================
   toolkit:
     container_name: aigc-watermark-toolkit
-    build:
-      context: .                  # 使用当前目录作为构建上下文
-      dockerfile: Dockerfile      # 使用当前目录的Dockerfile
 
-    image: aigc-watermark-toolkit:latest
+    # 普通用户：使用预构建镜像（推荐）
+    image: millionmillionli/aigc-identification-toolkit:latest
+
+    # 开发者：从源码构建（取消下面两行注释，并注释上面的 image 行）
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
 
     # ====================================
     # GPU支持（NVIDIA Docker）
@@ -87,16 +103,17 @@ services:
     # 选项：ro=只读（read-only），rw=读写（默认）
     volumes:
       # ====== 模型缓存目录（最重要！）======
-      # 说明：将主机的Hugging Face缓存挂载到容器
-      # - 主机路径：/fs-computility/wangxuhong/limeilin/.cache/huggingface
-      #   这是你实际存储AI模型的地方（Stable Diffusion、Mistral等）
+      # 说明：将主机的 Hugging Face 缓存挂载到容器
+      # - 主机路径：~/.cache/huggingface（用户的 Hugging Face 缓存目录）
+      #   这是 AI 模型存储的地方（Stable Diffusion、Mistral 等）
       # - 容器路径：/cache/huggingface
-      #   容器内通过HF_HOME环境变量访问
+      #   容器内通过 HF_HOME 环境变量访问
       # - 好处：
       #   1. 不重复下载模型（直接用现有的）
       #   2. 多个容器可以共享同一份模型
       #   3. 节省磁盘空间
-      - /fs-computility/wangxuhong/limeilin/.cache/huggingface:/cache/huggingface
+      # - 注意：首次运行会自动下载模型（约 35GB），需要一定时间
+      - ~/.cache/huggingface:/cache/huggingface
 
       # ====== 配置文件（只读挂载）======
       # 说明：挂载项目配置文件，修改后立即生效

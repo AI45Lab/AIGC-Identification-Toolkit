@@ -14,19 +14,15 @@
     <br />
     <a href="#usage"><strong>Quick Start »</strong></a>
     <br />
-    <br />
-    <a href="pictures/watermark.mp4">Live Demo</a>
-    ·
-    <a href="https://github.com/your-repo-link/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/your-repo-link/issues">Request Feature</a>
   </p>
 
 </div>
 
+<div align="center">
+  English | <a href="./README.md">简体中文</a>
+</div>
 
-
-
+---
 
 ## About The Project
 
@@ -100,51 +96,192 @@ This project provides an all-in-one open-source identification toolkit. Supporti
    export HF_HUB_OFFLINE=1
    export HF_ENDPOINT=https://hf-mirror.com
    ```
-#### 🐳 Docker Installation
+#### 🐳 Docker Installation (Recommended)
 
-1. Clone the repository
+Docker is the recommended installation method, providing a ready-to-use environment without manual dependency configuration.
 
+##### Prerequisites
+
+1. **NVIDIA GPU and Drivers**
    ```bash
-   git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Identification-Toolkit.git
+   # Check GPU and CUDA version
+   nvidia-smi
+   # Requires CUDA 11.8 or higher
+   ```
+
+2. **NVIDIA Container Toolkit**
+   ```bash
+   # Ubuntu/Debian installation
+   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+   curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+   curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+   sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+   sudo systemctl restart docker
+
+   # Verify installation
+   docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi
+   ```
+
+3. **Docker and Docker Compose**
+   - Docker Engine >= 20.10
+   - Docker Compose >= 2.0
+
+##### Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone --depth 1 https://github.com/MillionMillionLi/AIGC-Identification-Toolkit.git
    cd AIGC-Identification-Toolkit
    ```
 
-2. (Optional) Prepare AI generation models
-
-   This step is only required if you need to use AI-generated content with watermarking.
-
-   **Required models**:
-   - Image generation: Stable Diffusion 2.1 (`stabilityai/stable-diffusion-2-1-base`)
-   - Video generation: Wan2.1 (`Wan-AI/Wan2.1-T2V-1.3B-Diffusers`)
-   - Text generation: Mistral 7B + PostMark embeddings (`mistralai/Mistral-7B-Instruct-v0.2`)
-   - Audio generation: Bark (`suno/bark`)
-
-   **Model storage location**:
-
-   Docker will automatically search the host's `~/.cache/huggingface/` directory. If your models are in a different path, modify `docker-compose.yml`:
-
-   ```yaml
-   volumes:
-     # Change the first path to your actual model cache path
-     - /your/path/.cache/huggingface:/cache/huggingface
+2. **Start the container** (automatically pulls pre-built image)
+   ```bash
+   docker compose up -d
    ```
 
-   **Environment variable configuration** (`docker-compose.yml`):
+   First launch will automatically pull the image from DockerHub (~8GB), taking 5-10 minutes.
+
+3. **Enter the container**
+   ```bash
+   docker exec -it aigc-watermark-toolkit bash
+   ```
+
+4. **Run test verification**
+   ```bash
+   # Execute inside container
+   python tests/test_unified_engine.py
+   ```
+
+##### Model Preparation
+
+**On first run, the container will automatically download AI models to the host's `~/.cache/huggingface` directory (~35GB), which may take some time.**
+
+If you already have models downloaded, ensure they're in `~/.cache/huggingface/`. If models are in a different path, modify `docker-compose.yml`:
+
+```yaml
+volumes:
+  - /your/model/path/.cache/huggingface:/cache/huggingface
+```
+
+**Required models**:
+- Image generation: Stable Diffusion 2.1 (`stabilityai/stable-diffusion-2-1-base`)
+- Video generation: Wan2.1 (`Wan-AI/Wan2.1-T2V-1.3B-Diffusers`)
+- Text generation: Mistral 7B (`mistralai/Mistral-7B-Instruct-v0.2`)
+- Audio generation: Bark (`suno/bark`)
+
+##### Configuration Customization
+
+**Adjust GPU memory usage** (if encountering CUDA out of memory):
+
+Edit `config/default_config.yaml`:
+```yaml
+image_watermark:
+  resolution: 320          # Lower resolution (default 512)
+  num_inference_steps: 20  # Reduce inference steps (default 30)
+```
+
+**Enable offline mode** (no network environment):
+
+Edit `docker-compose.yml`, uncomment these lines:
+```yaml
+environment:
+  - TRANSFORMERS_OFFLINE=1
+  - HF_HUB_OFFLINE=1
+```
+
+**Mirror acceleration (for China)**:
+
+Uncomment in `docker-compose.yml`:
+```yaml
+environment:
+  - HF_ENDPOINT=https://hf-mirror.com
+```
+
+##### Troubleshooting
+
+<details>
+<summary><b>Q: Container fails to start "could not select device driver"</b></summary>
+
+**Cause**: nvidia-docker2 not installed or incorrectly configured
+
+**Solution**:
+```bash
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
+```
+</details>
+
+<details>
+<summary><b>Q: CUDA out of memory error</b></summary>
+
+**Cause**: Insufficient GPU memory
+
+**Solution**:
+1. Lower generation parameters (see "Configuration Customization" above)
+2. Or add environment variable:
    ```yaml
    environment:
-     - HF_HOME=/cache/huggingface
-     - HF_HUB_CACHE=/cache/huggingface/hub
+     - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
+   ```
+</details>
+
+<details>
+<summary><b>Q: Model download fails or is slow</b></summary>
+
+**Solution**:
+1. Use mirror acceleration (see "Configuration Customization" above)
+2. Or enable offline mode and manually download models to `~/.cache/huggingface/`
+</details>
+
+<details>
+<summary><b>Q: Permission errors inside container</b></summary>
+
+**Cause**: UID/GID mismatch
+
+**Solution**: Container uses UID 1000, ensure host user UID is 1000, or modify UID in Dockerfile
+</details>
+
+<details>
+<summary><b>Q: How to update to the latest version</b></summary>
+
+```bash
+docker compose pull
+docker compose up -d
+```
+</details>
+
+##### Developer Mode
+
+If you need to modify code or build from source:
+
+1. **Edit `docker-compose.yml`**:
+   ```yaml
+   # Comment out this line
+   # image: millionmillionli/aigc-identification-toolkit:latest
+
+   # Uncomment these lines
+   build:
+     context: .
+     dockerfile: Dockerfile
    ```
 
-3. Build and run Docker image
-
+2. **Build and start**:
    ```bash
-   # Build image
-   docker-compose build
-
-   # Run test validation
-   docker-compose run --rm toolkit python -m pytest tests/ -v
+   docker compose build
+   docker compose up -d
    ```
+
+3. **Hot code reload**:
+   Source code is mounted via volumes. Changes to the `src/` directory on the host take effect immediately inside the container (no rebuild needed).
+
+##### Image Information
+
+- **DockerHub**: [millionmillionli/aigc-identification-toolkit](https://hub.docker.com/r/millionmillionli/aigc-identification-toolkit)
+- **Image size**: ~8GB (excluding AI models)
+- **Base environment**: PyTorch 2.4.0, CUDA 11.8, Python 3.10
+- **Supported features**: Text/Image/Audio/Video watermarking + explicit marking
 
 ---
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

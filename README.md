@@ -14,19 +14,15 @@
     <br />
     <a href="#使用方法"><strong>快速开始 »</strong></a>
     <br />
-    <br />
-    <a href="pictures/watermark.mp4">在线演示</a>
-    ·
-    <a href="https://github.com/your-repo-link/issues">报告问题</a>
-    ·
-    <a href="https://github.com/your-repo-link/issues">请求功能</a>
   </p>
 
 </div>
 
+<div align="center">
+  <a href="./README_EN.md">English</a> | 简体中文
+</div>
 
-
-
+---
 
 ## 关于项目
 
@@ -100,54 +96,84 @@
    export HF_HUB_OFFLINE=1
    export HF_ENDPOINT=https://hf-mirror.com
    ```
-#### 🐳 Docker安装
+#### 🐳 Docker 安装（推荐）
 
-1. 克隆仓库
+Docker 方式为推荐的安装方式，提供开箱即用的环境，无需手动配置依赖。
 
+##### 前置要求
+
+1. **NVIDIA GPU 和驱动**
    ```bash
-   git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Identification-Toolkit.git
+   # 检查 GPU 和 CUDA 版本
+   nvidia-smi
+   # 需要 CUDA 11.8 或更高版本
+   ```
+
+2. **NVIDIA Container Toolkit**
+   ```bash
+   # Ubuntu/Debian 安装
+   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+   curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+   curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+   sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+   sudo systemctl restart docker
+
+   # 验证安装
+   docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi
+   ```
+
+3. **Docker 和 Docker Compose**
+   - Docker Engine >= 20.10
+   - Docker Compose >= 2.0
+
+##### 快速开始
+
+1. **克隆仓库**
+   ```bash
+   git clone --depth 1 https://github.com/MillionMillionLi/AIGC-Identification-Toolkit.git
    cd AIGC-Identification-Toolkit
    ```
 
-2. （可选）准备 AI 生成模型
-
-   仅当需要使用 AI 生成内容并添加水印功能时才需要此步骤。
-
-   **需要下载的模型**：
-   - 图像生成：Stable Diffusion 2.1 (`stabilityai/stable-diffusion-2-1-base`)
-   - 视频生成：Wan2.1 (`Wan-AI/Wan2.1-T2V-1.3B-Diffusers`)
-   - 文本生成：Mistral 7B + PostMark词嵌入 (`mistralai/Mistral-7B-Instruct-v0.2`)
-   - 音频生成：Bark (`suno/bark`)
-
-   **模型存储位置**：
-
-   Docker会自动查找主机的 `~/.cache/huggingface/` 目录。如果你的模型在其他路径，需要修改 `docker-compose.yml`：
-
-   ```yaml
-   volumes:
-     # 将第一行的路径改为你的实际模型缓存路径
-     - /你的路径/.cache/huggingface:/cache/huggingface
-   ```
-
-   **环境变量配置**（`docker-compose.yml` ）：
-   ```yaml
-   environment:
-     - HF_HOME=/cache/huggingface
-     - HF_HUB_CACHE=/cache/huggingface/hub
-   ```
-
-3. 构建并运行Docker镜像
-
+2. **启动容器**（自动拉取预构建镜像）
    ```bash
-   # 构建镜像
-   docker-compose build
-
-   # 运行测试验证
-   docker-compose run --rm toolkit python -m pytest tests/ -v
+   docker compose up -d
    ```
 
----
-<p align="right">(<a href="#readme-top">返回顶部</a>)</p>
+   首次启动会自动从 DockerHub 拉取镜像（约 8GB），需要 5-10 分钟。
+
+3. **进入容器**
+   ```bash
+   docker exec -it aigc-watermark-toolkit bash
+   ```
+
+4. **运行测试验证**
+   ```bash
+   # 容器内执行
+   python tests/test_unified_engine.py
+   ```
+
+##### 模型准备说明
+
+**首次运行时，容器会自动下载 AI 模型到主机的 `~/.cache/huggingface` 目录（约 35GB），需要一定时间。**
+
+如果你已经下载了模型，确保模型位于 `~/.cache/huggingface/`。如果模型在其他路径，修改 `docker-compose.yml`：
+
+```yaml
+volumes:
+  - /你的模型路径/.cache/huggingface:/cache/huggingface
+```
+
+**所需模型列表**：
+- 图像生成：Stable Diffusion 2.1 (`stabilityai/stable-diffusion-2-1-base`)
+- 视频生成：Wan2.1 (`Wan-AI/Wan2.1-T2V-1.3B-Diffusers`)
+- 文本生成：Mistral 7B (`mistralai/Mistral-7B-Instruct-v0.2`)
+- 音频生成：Bark (`suno/bark`)
+
+
+
+
 
 ## 使用方法
 

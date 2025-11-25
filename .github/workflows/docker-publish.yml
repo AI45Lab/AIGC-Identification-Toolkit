@@ -1,0 +1,94 @@
+name: Build and Push Docker Image to DockerHub
+
+on:
+  # 触发条件 1: main 分支推送（仅当 Docker 相关文件变更时）
+  push:
+    branches:
+      - main
+    paths:
+      - 'Dockerfile'
+      - 'requirements.txt'
+      - 'setup.py'
+      - 'src/**'
+      - 'config/**'
+      - '.github/workflows/docker-publish.yml'
+
+  # 触发条件 2: 手动触发
+  workflow_dispatch:
+    inputs:
+      force_build:
+        description: 'Force rebuild without cache'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout 代码（关键：不初始化 14GB benchmark 子模块）
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1          # 浅克隆，加快速度
+          submodules: false       # 不下载 benchmark 子模块
+
+      # Step 2: 设置 Docker Buildx（支持多平台构建和缓存）
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Step 3: 登录 DockerHub
+      - name: Log in to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Step 4: 提取 Docker 元数据（生成标签和标签）
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: millionmillionli/aigc-identification-toolkit
+          tags: |
+            # 始终使用 latest 标签
+            type=raw,value=latest
+            # 添加 commit SHA 短标签用于追溯
+            type=sha,prefix=sha-,format=short
+
+      # Step 5: 构建并推送 Docker 镜像
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # 使用 GitHub Actions 缓存加速构建
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # 如果手动触发且选择强制构建，则禁用缓存
+          no-cache: ${{ github.event.inputs.force_build == 'true' }}
+          build-args: |
+            BUILDKIT_INLINE_CACHE=1
+
+      # Step 6: 生成构建摘要（显示在 GitHub Actions 页面）
+      - name: Generate build summary
+        run: |
+          echo "### 🚀 Docker 镜像构建成功！" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**镜像标签:**" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.meta.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**拉取镜像:**" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "docker pull millionmillionli/aigc-identification-toolkit:latest" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**DockerHub 链接:** [millionmillionli/aigc-identification-toolkit](https://hub.docker.com/r/millionmillionli/aigc-identification-toolkit)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**提交 SHA:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
