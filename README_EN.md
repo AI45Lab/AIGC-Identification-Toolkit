@@ -252,7 +252,7 @@ Evaluate image watermarking algorithm robustness against traditional distortion 
 **Core Features**:
 -  **Dataset**: W-Bench DISTORTION_1K (1000 images)
 
--  **Evaluation Metrics**: PSNR, SSIM, LPIPS, TPR, Bit accuracy
+-  **Evaluation Metrics**:: PSNR, SSIM, LPIPS, TPR, Bit accuracy
 
 **Quick Start**:
 ```bash
@@ -266,7 +266,7 @@ python benchmarks/Image-Bench/run_benchmark.py
    dataset:
      path: benchmarks/Image-Bench/dataset/my_dataset
    ```
-**Evaluation Metrics**
+**Evaluation Metrics**:
 | Metric Category | Metric | Threshold | Description |
 |----------|------|----------|----------|
 | **Quality** | PSNR | ≥ 35.0 dB | Peak Signal-to-Noise Ratio, higher is better |
@@ -320,12 +320,13 @@ python benchmarks/Audio-Bench/run_benchmark.py
    dataset:
      path: benchmarks/Audio-Bench/dataset/my_audio_dataset
    ```
-**Evaluation Metrics**
+**Evaluation Metrics**:
 | Metric Category | Metric | Threshold | Description |
 |----------|------|----------|----------|
 | **Quality** | SNR | ≥ 20.0 dB | Signal-to-Noise Ratio, original audio vs watermarked audio, higher is better |
 | **Robustness** | TPR (Detection Probability) | ≥ 0.80 | True Positive Rate determined by detection probability |
 | **Robustness** | Bit Accuracy | ≥ 0.875 | Pattern watermark bit accuracy, higher is better |
+
 **Result Analysis**:
 <table>
   <tr>
@@ -371,7 +372,7 @@ python benchmarks/Video-Bench/run_benchmark.py
      path: benchmarks/Video-Bench/dataset/my_video_dataset
    ```
 
-**Evaluation Metrics**
+**Evaluation Metrics**:
 
 | Metric Category | Metric | Threshold | Description |
 |----------|------|----------|----------|

@@ -252,7 +252,7 @@ mark_result = tool.extract(marked_content, 'text', operation='visible_mark')
 **核心特性**:
 -  **数据集**: W-Bench DISTORTION_1K（1000张图像）
 
--  **评估指标**: PSNR, SSIM, LPIPS, TPR，Bit accuracy
+-  **评估指标**：: PSNR, SSIM, LPIPS, TPR，Bit accuracy
 
 **快速使用**:
 ```bash
@@ -266,7 +266,7 @@ python benchmarks/Image-Bench/run_benchmark.py
    dataset:
      path: benchmarks/Image-Bench/dataset/my_dataset
    ```
-**评估指标**
+**评估指标**：
 | 指标类别 | 指标 | 判定阈值 | 指标说明 |
 |----------|------|----------|----------|
 | **质量** | PSNR | ≥ 35.0 dB | Peak Signal-to-Noise Ratio（峰值信噪比），越高越好 |
@@ -320,12 +320,13 @@ python benchmarks/Audio-Bench/run_benchmark.py
    dataset:
      path: benchmarks/Audio-Bench/dataset/my_audio_dataset
    ```
-**评估指标**
+**评估指标**：
 | 指标类别 | 指标 | 判定阈值 | 指标说明 |
 |----------|------|----------|----------|
 | **质量** | SNR | ≥ 20.0 dB | Signal-to-Noise Ratio，原音频 vs 水印音频，越高越好 |
 | **鲁棒性** | TPR (Detection Probability) | ≥ 0.80 | 以检测概率判定的真阳性率 |
 | **鲁棒性** | Bit Accuracy | ≥ 0.875 | 图案水印比特正确率，越高越好 |
+
 **结果分析**：
 <table>
   <tr>
@@ -371,7 +372,7 @@ python benchmarks/Video-Bench/run_benchmark.py
      path: benchmarks/Video-Bench/dataset/my_video_dataset
    ```
 
-**评估指标**
+**评估指标**：
 
 | 指标类别 | 指标 | 判定阈值 | 指标说明 |
 |----------|------|----------|----------|
