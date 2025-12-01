@@ -2,7 +2,7 @@
 Wan2.1 + VideoSeal 水印完整集成测试
 测试Wan2.1视频生成与VideoSeal水印嵌入、提取的完整流程
 """
-# python3 tests/test_wan_videoseal_integration.py -v
+# python3 tests/test_wan_videoseal.py -v
 import os
 import sys
 import logging

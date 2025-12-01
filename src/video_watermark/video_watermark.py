@@ -42,17 +42,17 @@ class VideoWatermark:
         
         # 保存配置
         self.config = config or {}
-        
+
         # 设置日志
         self.logger = logging.getLogger(__name__)
-        
+
         # 初始化组件（延迟加载）
         self.model_manager = None
         self.video_generator = None
         self.watermark_wrapper = None
-        
-        # 创建缓存目录
-        FileUtils.ensure_dir(cache_dir)
+
+        # 创建缓存目录（使用解析后的 self.cache_dir，而不是可能为 None 的参数）
+        FileUtils.ensure_dir(self.cache_dir)
         
         self.logger.info(f"VideoWatermark初始化完成，设备: {self.device}")
     

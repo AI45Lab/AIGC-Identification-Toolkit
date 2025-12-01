@@ -71,7 +71,7 @@ audio_watermark:
 video_watermark:
   generator: "wan"  # 视频生成器：Wan2.1-T2V-1.3B
   watermark: "videoseal"  # 水印算法：VideoSeal
-  cache_dir: null  # 默认使用 $HF_HOME/hub 或 ~/.cache/huggingface/hub
+  cache_dir: "~/.cache/huggingface"  # 模型缓存目录（扩展路径）
   device: null  # 自动选择设备
 
   # Wan2.1视频生成参数（基于官方推荐的最优参数）
