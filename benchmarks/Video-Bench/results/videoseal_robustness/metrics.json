@@ -1,0 +1,184 @@
+{
+  "quality": {
+    "psnr": 40.59207382202148,
+    "ssim": 0.9795607779846816,
+    "tLP": 0.0014265083001494836
+  },
+  "detection": {
+    "fnr": 0.045588235294117596,
+    "bit_accuracy": 0.94892578125,
+    "avg_confidence": "0.72955287"
+  },
+  "per_attack": {
+    "crop_0.9": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.95546875,
+      "avg_confidence": "0.6758516"
+    },
+    "crop_0.92": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.961328125,
+      "avg_confidence": "0.69486654"
+    },
+    "crop_0.94": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9599609375,
+      "avg_confidence": "0.7103253"
+    },
+    "crop_0.96": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.971875,
+      "avg_confidence": "0.7587875"
+    },
+    "crop_0.98": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9791015625,
+      "avg_confidence": "0.8053052"
+    },
+    "frame_average_1": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.987890625,
+      "avg_confidence": "0.87110436"
+    },
+    "frame_average_2": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.98359375,
+      "avg_confidence": "0.85139096"
+    },
+    "frame_average_3": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.977734375,
+      "avg_confidence": "0.8289698"
+    },
+    "frame_average_4": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.978125,
+      "avg_confidence": "0.82598555"
+    },
+    "frame_average_5": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9751953125,
+      "avg_confidence": "0.81773055"
+    },
+    "frame_remove_0.0": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.987890625,
+      "avg_confidence": "0.87110436"
+    },
+    "frame_remove_0.05": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9865234375,
+      "avg_confidence": "0.86076194"
+    },
+    "frame_remove_0.1": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.986328125,
+      "avg_confidence": "0.86052334"
+    },
+    "frame_remove_0.15": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9865234375,
+      "avg_confidence": "0.86152"
+    },
+    "frame_remove_0.2": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.987109375,
+      "avg_confidence": "0.8563385"
+    },
+    "frame_swap_0.0": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.987890625,
+      "avg_confidence": "0.87110436"
+    },
+    "frame_swap_0.05": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.987890625,
+      "avg_confidence": "0.8717812"
+    },
+    "frame_swap_0.1": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.988671875,
+      "avg_confidence": "0.86585295"
+    },
+    "frame_swap_0.15": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9869140625,
+      "avg_confidence": "0.87476367"
+    },
+    "frame_swap_0.2": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9869140625,
+      "avg_confidence": "0.86700517"
+    },
+    "gaussian_blur_0.1": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.987890625,
+      "avg_confidence": "0.87110436"
+    },
+    "gaussian_blur_0.5": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.983984375,
+      "avg_confidence": "0.84495515"
+    },
+    "gaussian_blur_1.0": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.978125,
+      "avg_confidence": "0.820191"
+    },
+    "gaussian_blur_1.5": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9748046875,
+      "avg_confidence": "0.8159429"
+    },
+    "gaussian_noise_0.01": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9767578125,
+      "avg_confidence": "0.7854472"
+    },
+    "gaussian_noise_0.05": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.89296875,
+      "avg_confidence": "0.3758394"
+    },
+    "gaussian_noise_0.1": {
+      "fnr": 0.09999999999999998,
+      "bit_accuracy": 0.8,
+      "avg_confidence": "0.1862579"
+    },
+    "gaussian_noise_0.15": {
+      "fnr": 0.55,
+      "bit_accuracy": 0.707421875,
+      "avg_confidence": "0.1124774"
+    },
+    "gaussian_noise_0.2": {
+      "fnr": 0.8,
+      "bit_accuracy": 0.6541015625,
+      "avg_confidence": "0.08601858"
+    },
+    "jpeg_20": {
+      "fnr": 0.09999999999999998,
+      "bit_accuracy": 0.8501953125,
+      "avg_confidence": "0.38335901"
+    },
+    "jpeg_40": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9396484375,
+      "avg_confidence": "0.6532055"
+    },
+    "jpeg_60": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.95390625,
+      "avg_confidence": "0.71804297"
+    },
+    "jpeg_80": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.978515625,
+      "avg_confidence": "0.81203157"
+    },
+    "jpeg_90": {
+      "fnr": 0.0,
+      "bit_accuracy": 0.9822265625,
+      "avg_confidence": "0.83885396"
+    }
+  }
+}

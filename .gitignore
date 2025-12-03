@@ -51,7 +51,6 @@ logs/
 
 # Data files
 *.csv
-*.json
 *.pkl
 *.pickle
 

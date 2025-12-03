@@ -1,0 +1,251 @@
+{
+  "metadata": {
+    "algorithm": "videoseal",
+    "message": "W-Bench-Test-2025",
+    "num_images": 1000,
+    "dataset": "DISTORTION_1K",
+    "timestamp": "2025-11-16T07:20:32.920989"
+  },
+  "quality_metrics": {
+    "psnr": 45.524781570677874,
+    "ssim": 0.9953748712903289,
+    "lpips": 0.0025752356920274904
+  },
+  "robustness_by_attack": {
+    "brightness": {
+      "1.2": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 20.962014783859253,
+        "bit_accuracy": 0.99755078125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "1.4": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 19.278512575149538,
+        "bit_accuracy": 0.9896875,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "1.6": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 17.359662575006485,
+        "bit_accuracy": 0.9784140625,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "1.8": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 15.460774363279343,
+        "bit_accuracy": 0.964609375,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "2.0": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 13.802913424134255,
+        "bit_accuracy": 0.950171875,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      }
+    },
+    "contrast": {
+      "1.2": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 21.15742832660675,
+        "bit_accuracy": 0.9984375,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "1.4": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 20.29306991958618,
+        "bit_accuracy": 0.99623046875,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "1.6": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 19.124458473682402,
+        "bit_accuracy": 0.991703125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "1.8": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 17.853217593908308,
+        "bit_accuracy": 0.98562109375,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "2.0": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 16.626844682097435,
+        "bit_accuracy": 0.97826953125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      }
+    },
+    "blurring": {
+      "1": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 21.458676552772523,
+        "bit_accuracy": 0.998875,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "3": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 19.953149360656738,
+        "bit_accuracy": 0.99544140625,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "5": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 3.4069662456512453,
+        "bit_accuracy": 0.814546875,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "7": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 1.2184365491867066,
+        "bit_accuracy": 0.708765625,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "9": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 1.0958826919198037,
+        "bit_accuracy": 0.71580078125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      }
+    },
+    "noise": {
+      "0.02": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 17.4536075963974,
+        "bit_accuracy": 0.98628515625,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "0.04": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 10.518575091600418,
+        "bit_accuracy": 0.92928515625,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "0.06": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 6.515919765353202,
+        "bit_accuracy": 0.8623203125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "0.08": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 4.599923705101014,
+        "bit_accuracy": 0.80590625,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "0.1": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 3.6209363023042678,
+        "bit_accuracy": 0.7627578125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      }
+    },
+    "compression": {
+      "10": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 3.2418598636984823,
+        "bit_accuracy": 0.762453125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "25": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 9.445000050783158,
+        "bit_accuracy": 0.92478515625,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "40": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 14.766259154558181,
+        "bit_accuracy": 0.97141796875,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "55": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 17.64619751214981,
+        "bit_accuracy": 0.98787109375,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      },
+      "70": {
+        "tpr": 1.0,
+        "detection_rate": 1.0,
+        "avg_confidence": 19.535549132347107,
+        "bit_accuracy": 0.995203125,
+        "total_images": 1000,
+        "detected_count": 1000,
+        "failed_count": 0
+      }
+    }
+  }
+}

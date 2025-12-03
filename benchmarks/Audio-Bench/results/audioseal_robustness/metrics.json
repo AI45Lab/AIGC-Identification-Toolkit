@@ -1,0 +1,534 @@
+{
+  "metadata": {
+    "algorithm": "audioseal",
+    "message": "Audio-Bench-Test-2025",
+    "message_bits": 16,
+    "sample_rate": 16000,
+    "tau_prob": 0.15,
+    "tau_ba": 0.1,
+    "num_audios": 106,
+    "timestamp": "2025-11-18T23:50:17.940207"
+  },
+  "quality_metrics": {
+    "snr_mean": -2.321493440079239,
+    "snr_std": 0.4809663680658909,
+    "snr_min": -4.309548377990723,
+    "snr_max": -0.9851489067077637,
+    "num_audios": 106
+  },
+  "robustness_by_attack": {
+    "gaussian_noise": {
+      "40": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.8539737850989936,
+        "avg_bit_accuracy": 0.9982311320754716,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "30": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.5512968164007619,
+        "avg_bit_accuracy": 0.9628537735849056,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "20": {
+        "tpr_prob": 0.8490566037735849,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.29015621479670956,
+        "avg_bit_accuracy": 0.8632075471698113,
+        "fnr_prob": 0.15094339622641506,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 90,
+        "detected_count_ba": 106
+      },
+      "10": {
+        "tpr_prob": 0.24528301886792453,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.10468944762547869,
+        "avg_bit_accuracy": 0.6550707547169812,
+        "fnr_prob": 0.7547169811320755,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 26,
+        "detected_count_ba": 106
+      },
+      "5": {
+        "tpr_prob": 0.0660377358490566,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.033707062366477844,
+        "avg_bit_accuracy": 0.5536556603773585,
+        "fnr_prob": 0.9339622641509434,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 7,
+        "detected_count_ba": 106
+      }
+    },
+    "background_noise": {
+      "40": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.8110053319976015,
+        "avg_bit_accuracy": 0.995872641509434,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "30": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.5068960286817461,
+        "avg_bit_accuracy": 0.9604952830188679,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "20": {
+        "tpr_prob": 0.9150943396226415,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.2881882323198161,
+        "avg_bit_accuracy": 0.8378537735849056,
+        "fnr_prob": 0.08490566037735847,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 97,
+        "detected_count_ba": 106
+      },
+      "10": {
+        "tpr_prob": 0.25471698113207547,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.10375886605250789,
+        "avg_bit_accuracy": 0.6674528301886793,
+        "fnr_prob": 0.7452830188679245,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 27,
+        "detected_count_ba": 106
+      },
+      "5": {
+        "tpr_prob": 0.03773584905660377,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.04442246955103364,
+        "avg_bit_accuracy": 0.5884433962264151,
+        "fnr_prob": 0.9622641509433962,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 4,
+        "detected_count_ba": 106
+      }
+    },
+    "time_stretch": {
+      "0.8": {
+        "tpr_prob": 0.8584905660377359,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.2501229927391868,
+        "avg_bit_accuracy": 0.9734669811320755,
+        "fnr_prob": 0.14150943396226412,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 91,
+        "detected_count_ba": 106
+      },
+      "0.9": {
+        "tpr_prob": 0.8867924528301887,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.27541323156394765,
+        "avg_bit_accuracy": 0.9758254716981132,
+        "fnr_prob": 0.1132075471698113,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 94,
+        "detected_count_ba": 106
+      },
+      "1.0": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.972031980752945,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "1.1": {
+        "tpr_prob": 0.9905660377358491,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.30336194021521873,
+        "avg_bit_accuracy": 0.9952830188679245,
+        "fnr_prob": 0.009433962264150941,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 105,
+        "detected_count_ba": 106
+      },
+      "1.2": {
+        "tpr_prob": 0.8584905660377359,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.25923801206474034,
+        "avg_bit_accuracy": 0.9935141509433962,
+        "fnr_prob": 0.14150943396226412,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 91,
+        "detected_count_ba": 106
+      }
+    },
+    "quantization": {
+      "4": {
+        "tpr_prob": 0.05660377358490566,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.04423322583444939,
+        "avg_bit_accuracy": 0.4882075471698113,
+        "fnr_prob": 0.9433962264150944,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 6,
+        "detected_count_ba": 106
+      },
+      "8": {
+        "tpr_prob": 0.32075471698113206,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.10173066657526365,
+        "avg_bit_accuracy": 0.5288915094339622,
+        "fnr_prob": 0.679245283018868,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 34,
+        "detected_count_ba": 106
+      },
+      "16": {
+        "tpr_prob": 0.6037735849056604,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.20223390705057614,
+        "avg_bit_accuracy": 0.6462264150943396,
+        "fnr_prob": 0.39622641509433965,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 64,
+        "detected_count_ba": 106
+      },
+      "32": {
+        "tpr_prob": 0.8679245283018868,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.3210834302142689,
+        "avg_bit_accuracy": 0.8001179245283019,
+        "fnr_prob": 0.13207547169811318,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 92,
+        "detected_count_ba": 106
+      },
+      "64": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.46179198754845924,
+        "avg_bit_accuracy": 0.9009433962264151,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      }
+    },
+    "lowpass_filter": {
+      "0.1": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9714304889148137,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.2": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9780581897159792,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.3": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9765214554543765,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.4": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9716685751699051,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.5": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9738858055393651,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      }
+    },
+    "highpass_filter": {
+      "0.1": {
+        "tpr_prob": 0.12264150943396226,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.05380701909275815,
+        "avg_bit_accuracy": 0.6379716981132075,
+        "fnr_prob": 0.8773584905660378,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 13,
+        "detected_count_ba": 106
+      },
+      "0.2": {
+        "tpr_prob": 0.018867924528301886,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.02993087593844359,
+        "avg_bit_accuracy": 0.6025943396226415,
+        "fnr_prob": 0.9811320754716981,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 2,
+        "detected_count_ba": 106
+      },
+      "0.3": {
+        "tpr_prob": 0.1320754716981132,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.06699339037663347,
+        "avg_bit_accuracy": 0.5224056603773585,
+        "fnr_prob": 0.8679245283018868,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 14,
+        "detected_count_ba": 106
+      },
+      "0.4": {
+        "tpr_prob": 0.009433962264150943,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.008823736681622322,
+        "avg_bit_accuracy": 0.5465801886792453,
+        "fnr_prob": 0.9905660377358491,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 1,
+        "detected_count_ba": 106
+      },
+      "0.5": {
+        "tpr_prob": 0.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 3.716821825122988e-05,
+        "avg_bit_accuracy": 0.5801886792452831,
+        "fnr_prob": 1.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 0,
+        "detected_count_ba": 106
+      }
+    },
+    "smooth": {
+      "6": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9055580440557228,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "10": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9120141498322757,
+        "avg_bit_accuracy": 0.9410377358490566,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "14": {
+        "tpr_prob": 0.07547169811320754,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.035628256273240656,
+        "avg_bit_accuracy": 0.5224056603773585,
+        "fnr_prob": 0.9245283018867925,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 8,
+        "detected_count_ba": 106
+      },
+      "18": {
+        "tpr_prob": 0.7547169811320755,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.2495760859411983,
+        "avg_bit_accuracy": 0.6733490566037735,
+        "fnr_prob": 0.24528301886792447,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 80,
+        "detected_count_ba": 106
+      },
+      "22": {
+        "tpr_prob": 0.9905660377358491,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.528598788141642,
+        "avg_bit_accuracy": 0.7099056603773585,
+        "fnr_prob": 0.009433962264150941,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 105,
+        "detected_count_ba": 106
+      }
+    },
+    "echo": {
+      "0.1_0.1": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9569258088210844,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.2_0.2": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9419312072250078,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.3_0.3": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9230364707281005,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.4_0.4": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9037020296420691,
+        "avg_bit_accuracy": 0.9988207547169812,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "0.5_0.5": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.8705909943805551,
+        "avg_bit_accuracy": 0.9964622641509434,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      }
+    },
+    "mp3_compression": {
+      "64": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.975628173576211,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "96": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9730345426865343,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "128": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9746209433618581,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "192": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9744097944700493,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      },
+      "256": {
+        "tpr_prob": 1.0,
+        "tpr_ba": 1.0,
+        "avg_confidence": 0.9744097944700493,
+        "avg_bit_accuracy": 1.0,
+        "fnr_prob": 0.0,
+        "fnr_ba": 0.0,
+        "total_samples": 106,
+        "detected_count_prob": 106,
+        "detected_count_ba": 106
+      }
+    }
+  }
+}
