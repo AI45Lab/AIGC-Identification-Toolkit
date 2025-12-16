@@ -1,4 +1,4 @@
-# AIGC标识技术开发套件
+# UniMark: AI生成内容标识技术开发套件
 
 <div align="center">
   <!-- 项目logo占位符 - 需要logo图片 -->
@@ -7,8 +7,8 @@
   </a> -->
 
 
-  <h3 align="center">AIGC标识技术开发套件</h3>
-
+  <h3 align="center">UniMark: AI生成内容标识技术开发套件</h3>
+  
   <p align="center">
     一站式开源标识技术开发套件，支持文本、图像、音频和视频内容的显式标识，隐式标识和隐水印功能
     <br />
@@ -452,6 +452,21 @@ python benchmarks/Video-Bench/run_benchmark.py
 * [AudioMarkBench](https://github.com/mileskuo42/AudioMarkBench) - 音频水印评估框架
 
 
+
+<p align="right">(<a href="#readme-top">返回顶部</a>)</p>
+
+## 引用
+
+如果您觉得本项目对您的研究有所帮助，请考虑引用我们的论文：
+
+```bibtex
+@article{li2025unimark,
+  title={UniMark: Artificial Intelligence Generated Content Identification Toolkit},
+  author={Meilin Li and Ji He and Yu Yi and Jia Xu and Shanzhe Lei and Yan Teng and Yingchun Wang and Xuhong Wang},
+  journal={arXiv preprint arXiv:2512.12324},
+  year={2025}
+}
+```
 
 <p align="right">(<a href="#readme-top">返回顶部</a>)</p>
 

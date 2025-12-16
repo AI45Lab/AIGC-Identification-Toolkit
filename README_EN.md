@@ -1,4 +1,4 @@
-# AIGC Identification Toolkit
+# UniMark: Artificial Intelligence Generated Content Identification Toolkit
 
 <div align="center">
   <!-- Project logo placeholder - logo image needed -->
@@ -7,7 +7,7 @@
   </a> -->
 
 
-  <h3 align="center">AIGC Identification Toolkit</h3>
+  <h3 align="center">UniMark: Artificial Intelligence Generated Content Identification Toolkit</h3>
 
   <p align="center">
     An all-in-one open-source identification toolkit supporting explicit marking, implicit marking, and watermarking for text, image, audio, and video content
@@ -452,6 +452,21 @@ This project is built upon the following excellent open-source works:
 * [AudioMarkBench](https://github.com/mileskuo42/AudioMarkBench) - Audio watermark evaluation framework
 
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Citation
+
+If you find this project useful for your research, please consider citing our paper:
+
+```bibtex
+@article{li2025unimark,
+  title={UniMark: Artificial Intelligence Generated Content Identification Toolkit},
+  author={Meilin Li and Ji He and Yu Yi and Jia Xu and Shanzhe Lei and Yan Teng and Yingchun Wang and Xuhong Wang},
+  journal={arXiv preprint arXiv:2512.12324},
+  year={2025}
+}
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
