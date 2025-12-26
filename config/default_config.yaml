@@ -4,7 +4,7 @@
 text_watermark:
   algorithm: "postmark"  # 使用 PostMark 后处理水印算法
 
-  # PostMark 配置
+
   postmark:
     embedder: "nomic"                        # 嵌入模型: "nomic" (推荐本地部署)
     inserter: "mistral-7b-inst"              # 插入LLM: "mistral-7b-inst"
@@ -21,7 +21,6 @@ text_watermark:
     generation_top_p: 0.9                    # Nucleus sampling参数
     generation_top_k: 50                     # Top-k sampling参数
 
-    # PostMark模型缓存配置
     cache_dir: null  # 默认使用 $HF_HOME 或 ~/.cache/huggingface
 
 # 图像水印配置  
@@ -33,69 +32,65 @@ image_watermark:
   guidance_scale: 7.5
   watermark_key: "default"
   keys_dir: "keys"
-  device: null  # 自动选择设备
+  device: null  
   lowres_attenuation: true
   
-  # VideoSeal专用配置（使用优化的最优参数）
   videoseal:
-    replicate: 16  # 优化后的参数，提高多帧平均检测稳定性和准确率
-    chunk_size: 16  # 分块大小，平衡处理效率和检测精度
+    replicate: 16  
+    chunk_size: 16  
 
 # 音频水印配置
 audio_watermark:
   algorithm: "audioseal"  # 默认使用AudioSeal算法
   model_name: "audioseal_wm_16bits"
   detector_name: "audioseal_detector_16bits"
-  sample_rate: 16000  # AudioSeal要求的采样率
-  message_bits: 16  # 水印消息位数
-  device: null  # 自动选择设备，可设置为 "cuda" 或 "cpu"
-  watermark_strength: 1.0  # 水印强度 (0.0-2.0)
-  detection_threshold: 0.5  # 检测阈值
-  message_threshold: 0.5  # 消息解码阈值
+  sample_rate: 16000  
+  message_bits: 16  
+  device: null 
+  watermark_strength: 1.0  
+  detection_threshold: 0.5  
+  message_threshold: 0.5  
   
-  # Bark文本转音频配置
   bark:
-    model_size: "large"  # 模型大小 ("small", "large")
-    use_gpu: true  # 是否使用GPU
-    temperature: 0.8  # 生成温度 (0.0-1.0)
-    default_voice: "v2/en_speaker_6"  # 默认语音预设
-    silence_duration: 0.25  # 静音时长(秒)
+    model_size: "large"  
+    use_gpu: true  
+    temperature: 0.8  
+    default_voice: "v2/en_speaker_6"  
+    silence_duration: 0.25  
     
-  # AudioSeal专用配置
   audioseal:
-    nbits: 16  # 消息位数
-    alpha: 1.0  # 水印强度调节
-    cache_dir: "~/.cache/audioseal"  # 模型缓存目录
+    nbits: 16  
+    alpha: 1.0  
+    cache_dir: "~/.cache/audioseal"  
 
 # 视频水印配置
 video_watermark:
-  generator: "wan"  # 视频生成器：Wan2.1-T2V-1.3B
-  watermark: "videoseal"  # 水印算法：VideoSeal
-  cache_dir: "~/.cache/huggingface"  # 模型缓存目录（扩展路径）
-  device: null  # 自动选择设备
+  generator: "wan"  
+  watermark: "videoseal"  
+  cache_dir: "~/.cache/huggingface"  
+  device: null 
 
-  # Wan2.1视频生成参数（基于官方推荐的最优参数）
   wan:
-    model_name: "Wan-AI/Wan2.1-T2V-1.3B-Diffusers"  # Wan2.1模型仓库
-    num_frames: 81  # 帧数（5秒@15fps，Wan2.1推荐）
+    model_name: "Wan-AI/Wan2.1-T2V-1.3B-Diffusers"  
+    num_frames: 81  
     # 重要：高度与宽度需能被16整除
-    height: 480  # Wan2.1推荐480p（16的倍数）
-    width: 832   # Wan2.1推荐832（16:9比例，16的倍数）
-    num_inference_steps: 50  # 推理步数（Wan2.1推荐）
-    guidance_scale: 5.0  # 引导强度（Wan2.1推荐）
-    vram_requirement: "8GB"  # 显存需求
+    height: 480  
+    width: 832   
+    num_inference_steps: 50  
+    guidance_scale: 5.0  
+    vram_requirement: "8GB"  
 
-  # VideoSeal水印参数
+
   videoseal:
-    lowres_attenuation: true  # 低分辨率衰减
-    chunk_size: 16  # 分块大小，测试验证的最优参数
+    lowres_attenuation: true  
+    chunk_size: 16  
 
 # 输出配置
 output:
   text_output_dir: "outputs/text"
   image_output_dir: "outputs/images"
   audio_output_dir: "outputs/audio"
-  video_output_dir: "outputs/videos"  # 添加视频输出目录
+  video_output_dir: "outputs/videos"  
   log_level: "INFO"
   save_intermediate: false
 

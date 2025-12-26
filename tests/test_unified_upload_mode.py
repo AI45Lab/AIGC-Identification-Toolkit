@@ -22,17 +22,12 @@ class TestUnifiedUploadMode(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """测试类初始化"""
         logging.basicConfig(
             level=logging.INFO,
             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
         )
         cls.logger = logging.getLogger(__name__)
-        cls.logger.info("=" * 70)
-        cls.logger.info("开始 WatermarkTool 统一接口上传模式测试")
-        cls.logger.info("=" * 70)
 
-        # 初始化WatermarkTool统一接口
         try:
             cls.tool = WatermarkTool()
             cls.logger.info("✓ WatermarkTool 初始化成功")
@@ -44,30 +39,11 @@ class TestUnifiedUploadMode(unittest.TestCase):
         cls.test_results_dir = project_root / "tests" / "test_results"
         cls.output_dir = cls.test_results_dir / "unified_upload_mode"
         cls.output_dir.mkdir(parents=True, exist_ok=True)
-        cls.logger.info(f"✓ 输出目录创建成功: {cls.output_dir}")
 
         # 准备测试资源文件路径
         cls.test_image_path = cls.test_results_dir / "test_image_original.png"
         cls.test_audio_path = cls.test_results_dir / "test_audio_original.wav"
-        # 使用已上传的测试视频
         cls.test_video_path = cls.test_results_dir / "test_wan_basic_output.mp4"
-
-        # 检查图像和音频资源是否存在
-        if not cls.test_image_path.exists():
-            raise FileNotFoundError(f"测试图像文件不存在: {cls.test_image_path}")
-        cls.logger.info(f"✓ 测试图像文件存在: {cls.test_image_path}")
-
-        if not cls.test_audio_path.exists():
-            raise FileNotFoundError(f"测试音频文件不存在: {cls.test_audio_path}")
-        cls.logger.info(f"✓ 测试音频文件存在: {cls.test_audio_path}")
-
-        # 检查测试视频是否存在
-        if not cls.test_video_path.exists():
-            cls.logger.warning(f"⚠ 测试视频文件不存在: {cls.test_video_path}")
-            cls.logger.warning("⚠ 跳过视频测试")
-            cls.test_video_path = None
-        else:
-            cls.logger.info(f"✓ 测试视频文件存在: {cls.test_video_path}")
 
     def test_01_image_upload_watermark(self):
         """测试1: 图像上传模式水印嵌入与提取"""
@@ -76,30 +52,23 @@ class TestUnifiedUploadMode(unittest.TestCase):
         self.logger.info("=" * 60)
 
         try:
-            # 嵌入水印
-            self.logger.info(f"正在嵌入图像水印: {self.test_image_path}")
             watermarked_image = self.tool.embed(
-                content="",  # 占位符，上传模式不使用
+                content="",  
                 message="unified_test_image_2025",
                 modality='image',
                 image_input=str(self.test_image_path),
                 output_path=str(self.output_dir / "image_watermarked.png")
             )
 
-            # 验证嵌入结果
             self.assertIsNotNone(watermarked_image, "图像水印嵌入应返回有效内容")
             self.logger.info("✓ 图像水印嵌入成功")
 
-            # 提取水印
-            # 注意：不传递 replicate 和 chunk_size 参数，让统一接口使用默认优化值
-            # unified_engine 内部会自动使用 replicate=32, chunk_size=16
-            self.logger.info("正在提取图像水印...")
+
             result = self.tool.extract(
                 content=watermarked_image,
                 modality='image'
             )
 
-            # 验证提取结果
             self.assertIsNotNone(result, "提取应返回结果字典")
             self.assertIn('detected', result, "结果应包含'detected'字段")
             self.logger.info(f"检测结果: {result}")
@@ -130,7 +99,6 @@ class TestUnifiedUploadMode(unittest.TestCase):
                 self.logger.info(f"✓ 提取的消息: {result['message']}")
 
         except Exception as e:
-            self.logger.error(f"❌ 图像水印测试失败: {e}")
             import traceback
             self.logger.error(traceback.format_exc())
             self.fail(f"图像水印测试失败: {e}")

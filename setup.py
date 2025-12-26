@@ -9,7 +9,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 setup(
     name="AIGC-Identification-Toolkit",
     version="0.1.0",
-    author="码农团队",
+    author="lml",
     author_email="",
     description="AIGC内容标识开发套件 - 支持文本、图像、音频和视频的水印和显式标识",
     long_description=long_description,
@@ -45,8 +45,7 @@ setup(
         ],
     },
     entry_points={
-        "console_scripts": [
-            "watermark-tool=src.unified.watermark_tool:main",
+        "console_scripts": [        
         ],
     },
 ) 
