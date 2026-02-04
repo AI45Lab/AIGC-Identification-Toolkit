@@ -31,6 +31,9 @@
 
 This project provides an all-in-one open-source identification toolkit. Supporting four major modalities (text, image, audio, and video), it features explicit marking and watermarking capabilities, covering the identification scope specified in the GB 45438-2025 standard "Information Security Technology - Artificial Intelligence Generated and Synthesized Content Identification Methods".
 
+
+> **Use Case**: This project served as the core training platform for the **Shanghai AI Security Special Training Course 2025 Short-term Class**, supporting teaching and practical exercises to help students master AIGC watermarking embedding and detection techniques.
+
 ### Why Choose Us?
 
 - **Comprehensive Coverage**: Supports all identification methods required by GB 45438-2025 standard

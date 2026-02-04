@@ -177,7 +177,7 @@ class AudioIOUtils:
         if HAS_TORCHAUDIO:
             try:
                 # 确保waveform是CPU tensor
-                waveform_cpu = waveform.cpu()
+                waveform_cpu = waveform.detach().cpu()
                 torchaudio.save(str(file_path), waveform_cpu, sample_rate)
                 return
             except Exception as e:
@@ -187,17 +187,20 @@ class AudioIOUtils:
         if HAS_SOUNDFILE:
             try:
                 # soundfile需要(samples, channels)格式
-                if waveform.dim() == 2:
-                    data = waveform.T.numpy()
+                waveform_cpu = waveform.detach().cpu()
+                if waveform_cpu.dim() == 2:
+                    data = waveform_cpu.T.numpy()
+
                 else:
-                    data = waveform.numpy()
-                
+                    data = waveform_cpu.numpy()
                 sf.write(str(file_path), data, sample_rate, format=format)
                 return
             except Exception as e:
                 logging.error(f"soundfile保存失败: {e}")
+                # import traceback
+                # traceback.print_exc()
         
-        raise RuntimeError(f"无法保存音频文件: {file_path}，请安装torchaudio或soundfile")
+        raise RuntimeError(f"无法保存音频文件: {file_path}")
     
     @staticmethod
     def get_audio_info(file_path: Union[str, Path]) -> Dict[str, Any]:
@@ -581,23 +584,18 @@ if __name__ == "__main__":
     # 简单测试
     print("测试音频处理工具...")
     
-    # 测试基础功能
     print("\n1. 测试张量处理...")
     test_audio = torch.randn(1, 16000)  # 1秒音频
     print(f"原始音频形状: {test_audio.shape}")
     
-    # 测试归一化
     normalized = AudioProcessingUtils.normalize(test_audio)
     print(f"归一化后最大值: {normalized.abs().max():.3f}")
     
-    # 测试重采样
+
     if HAS_TORCHAUDIO:
         resampled = AudioProcessingUtils.resample(test_audio, 16000, 8000)
         print(f"重采样后形状: {resampled.shape}")
     
-    # 测试噪声添加
+
     noisy = AudioProcessingUtils.add_noise(test_audio, snr_db=10)
     snr = AudioQualityUtils.calculate_snr(test_audio, noisy)
-    print(f"添加噪声后SNR: {snr:.2f} dB")
-    
-    print("\n✅ 音频处理工具测试完成")
