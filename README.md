@@ -67,31 +67,31 @@
 
 ### 图像标识效果
 
-<table>
+<table width="100%">
   <tr>
-    <th align="center">原始图像</th>
-    <th align="center">隐水印图像</th>
-    <th align="center">显式标识图像</th>
+    <th align="center" width="33%">原始图像</th>
+    <th align="center" width="33%">隐水印图像</th>
+    <th align="center" width="34%">显式标识图像</th>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/demo/original_image.png" width="260"/></td>
-    <td align="center"><img src="docs/assets/demo/watermarked_image.png" width="260"/></td>
-    <td align="center"><img src="docs/assets/demo/visible_marked_image.png" width="260"/></td>
+    <td align="center"><img src="docs/demo/original_image.png" width="100%"/></td>
+    <td align="center"><img src="docs/demo/watermarked_image.png" width="100%"/></td>
+    <td align="center"><img src="docs/demo/visible_marked_image.png" width="100%"/></td>
   </tr>
 </table>
 
 ### 视频标识效果
 
-<table>
+<table width="100%">
   <tr>
-    <th align="center">原始视频</th>
-    <th align="center">隐水印视频</th>
-    <th align="center">显式标识视频</th>
+    <th align="center" width="33%">原始视频</th>
+    <th align="center" width="33%">隐水印视频</th>
+    <th align="center" width="34%">显式标识视频</th>
   </tr>
   <tr>
-    <td align="center"><video src="docs/assets/demo/original_video.mp4" width="260" controls></video></td>
-    <td align="center"><video src="docs/assets/demo/watermarked_video.mp4" width="260" controls></video></td>
-    <td align="center"><video src="docs/assets/demo/visible_marked_video.mp4" width="260" controls></video></td>
+    <td align="center"><video src="docs/demo/original_video.mp4" width="100%" controls></video></td>
+    <td align="center"><video src="docs/demo/watermarked_video.mp4" width="100%" controls></video></td>
+    <td align="center"><video src="docs/demo/visible_marked_video.mp4" width="100%" controls></video></td>
   </tr>
 </table>
 
