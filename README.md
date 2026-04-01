@@ -1,4 +1,4 @@
-# UniMark: AI生成内容水印标识开发套件
+# UniMark
 
 <div align="center">
   <!-- 项目logo占位符 - 需要logo图片 -->
@@ -7,10 +7,10 @@
   </a> -->
 
 
-  <h3 align="center">UniMark: AI生成内容标识技术开发套件</h3>
+  <h3 align="center">UniMark: AIGC Watermark & Identification Toolkit</h3>
   
   <p align="center">
-    一站式开源标识技术开发套件，支持文本、图像、音频和视频内容的显式标识，隐式标识和隐水印功能
+    一站式开源水印标识开发套件，支持文本、图像、音频和视频内容的显式标识，隐式标识和隐水印功能
     <br />
     <a href="#使用方法"><strong>快速开始 »</strong></a>
     <br />

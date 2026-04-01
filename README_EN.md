@@ -1,4 +1,4 @@
-# UniMark: Artificial Intelligence Generated Content Watermark Toolkit
+# UniMark
 
 <div align="center">
   <!-- Project logo placeholder - logo image needed -->
@@ -7,7 +7,7 @@
   </a> -->
 
 
-  <h3 align="center">UniMark: Artificial Intelligence Generated Content Watermark Toolkit</h3>
+  <h3 align="center">UniMark: AIGC Watermark & Identification Toolkit</h3>
 
   <p align="center">
     An all-in-one open-source Watermark toolkit supporting explicit marking, implicit marking, and watermarking for text, image, audio, and video content
