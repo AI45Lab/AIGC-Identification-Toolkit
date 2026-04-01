@@ -1,5 +1,5 @@
 """
-Unified Path Manager for AIGC Identification Toolkit
+Unified Path Manager for AIGC Watermark Toolkit
 
 This module provides cross-platform path resolution for model caches and data directories.
 It follows the priority order:

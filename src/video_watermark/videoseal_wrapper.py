@@ -29,14 +29,16 @@ except ImportError as e:
 class VideoSealWrapper:
     """VideoSeal水印算法包装器"""
     
-    def __init__(self, device: Optional[str] = None):
+    def __init__(self, device: Optional[str] = None, model_card: str = "videoseal_1.0"):
         """
         初始化VideoSeal包装器
-        
+
         Args:
             device: 计算设备 ('cuda', 'cpu', 或None自动选择)
+            model_card: VideoSeal模型卡名称
         """
         self.device = device or ('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model_card = model_card
         self.model = None
         
         # 设置日志
@@ -63,7 +65,7 @@ class VideoSealWrapper:
             os.chdir(videoseal_dir)
             try:
                 # 使用videoseal的默认模型加载方式（指定模型卡）
-                self.model = videoseal.load("videoseal_1.0")
+                self.model = videoseal.load(self.model_card)
             finally:
                 # 恢复工作目录
                 os.chdir(current_dir)

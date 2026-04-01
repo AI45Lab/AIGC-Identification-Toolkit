@@ -52,6 +52,7 @@
 
 ## 📑 目录
 
+- [效果展示](#效果展示)
 - [开始使用](#开始使用)
   - [安装](#安装)
 - [使用方法](#使用方法)
@@ -59,6 +60,40 @@
   - [Image-Bench](#image-bench)
   - [Audio-Bench](#audio-bench)
   - [Video-Bench](#video-bench)
+
+---
+
+## 🎬 效果展示
+
+### 图像标识效果
+
+<table>
+  <tr>
+    <th align="center">原始图像</th>
+    <th align="center">隐水印图像</th>
+    <th align="center">显式标识图像</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/assets/demo/original_image.png" width="260"/></td>
+    <td align="center"><img src="docs/assets/demo/watermarked_image.png" width="260"/></td>
+    <td align="center"><img src="docs/assets/demo/visible_marked_image.png" width="260"/></td>
+  </tr>
+</table>
+
+### 视频标识效果
+
+<table>
+  <tr>
+    <th align="center">原始视频</th>
+    <th align="center">隐水印视频</th>
+    <th align="center">显式标识视频</th>
+  </tr>
+  <tr>
+    <td align="center"><video src="docs/assets/demo/original_video.mp4" width="260" controls></video></td>
+    <td align="center"><video src="docs/assets/demo/watermarked_video.mp4" width="260" controls></video></td>
+    <td align="center"><video src="docs/assets/demo/visible_marked_video.mp4" width="260" controls></video></td>
+  </tr>
+</table>
 
 ---
 
@@ -71,8 +106,8 @@
 1. 克隆仓库
 
    ```bash
-   git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Identification-Toolkit.git
-   cd AIGC-Identification-Toolkit
+   git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Watermark-Toolkit.git
+   cd AIGC-Watermark-Toolkit
    ```
 
 2. 安装核心依赖
@@ -119,7 +154,7 @@
 
 1. 拉取镜像
    ```bash
-   docker pull millionmillionli/aigc-identification-toolkit:latest
+   docker pull millionmillionli/aigc-watermark-toolkit:latest
    ```
 
 2. 运行容器
@@ -132,7 +167,7 @@
      -e PYTHONPATH=/app \
      -e CUDA_VISIBLE_DEVICES=0 \
      --restart unless-stopped \
-     millionmillionli/aigc-identification-toolkit:latest \
+     millionmillionli/aigc-watermark-toolkit:latest \
      tail -f /dev/null
    ```
 

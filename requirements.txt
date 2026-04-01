@@ -1,5 +1,5 @@
 # ====================================
-# AIGC-Identification-Toolkit Requirements
+# AIGC-Watermark-Toolkit Requirements
 # ====================================
 
 # ============== 核心深度学习框架 ==============

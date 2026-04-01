@@ -50,7 +50,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: millionmillionli/aigc-identification-toolkit
+          images: millionmillionli/aigc-watermark-toolkit
           tags: |
             # 始终使用 latest 标签
             type=raw,value=latest
@@ -86,9 +86,9 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**拉取镜像:**" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-          echo "docker pull millionmillionli/aigc-identification-toolkit:latest" >> $GITHUB_STEP_SUMMARY
+          echo "docker pull millionmillionli/aigc-watermark-toolkit:latest" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**DockerHub 链接:** [millionmillionli/aigc-identification-toolkit](https://hub.docker.com/r/millionmillionli/aigc-identification-toolkit)" >> $GITHUB_STEP_SUMMARY
+          echo "**DockerHub 链接:** [millionmillionli/aigc-watermark-toolkit](https://hub.docker.com/r/millionmillionli/aigc-watermark-toolkit)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**提交 SHA:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY

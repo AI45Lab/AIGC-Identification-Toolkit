@@ -125,7 +125,8 @@ class VideoWatermark:
     def _ensure_watermark_wrapper(self) -> VideoSealWrapper:
         """确保水印包装器已初始化"""
         if self.watermark_wrapper is None:
-            self.watermark_wrapper = VideoSealWrapper(self.device)
+            model_card = self.config.get('videoseal', {}).get('model_card', 'videoseal_1.0')
+            self.watermark_wrapper = VideoSealWrapper(self.device, model_card=model_card)
         return self.watermark_wrapper
     
     def generate_video_with_watermark(
@@ -523,7 +524,8 @@ class VideoWatermark:
 # 方便的工厂函数
 def create_video_watermark(
     cache_dir: Optional[str] = None,
-    device: Optional[str] = None
+    device: Optional[str] = None,
+    config_path: Optional[str] = None
 ) -> VideoWatermark:
     """
     创建视频水印工具的快捷函数
@@ -531,11 +533,22 @@ def create_video_watermark(
     Args:
         cache_dir: 模型缓存目录（None则使用环境变量或默认路径）
         device: 计算设备
+        config_path: 配置文件路径，如果为None则使用默认配置
 
     Returns:
         VideoWatermark: 视频水印工具实例
     """
-    return VideoWatermark(cache_dir=cache_dir, device=device)
+    config = {}
+    if config_path:
+        import yaml
+        with open(config_path, 'r', encoding='utf-8') as f:
+            full_config = yaml.safe_load(f)
+        config = full_config.get('video_watermark', {})
+        if not cache_dir:
+            cache_dir = config.get('cache_dir')
+        if not device:
+            device = config.get('device')
+    return VideoWatermark(cache_dir=cache_dir, device=device, config=config)
 
 
 if __name__ == "__main__":

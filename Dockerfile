@@ -1,5 +1,5 @@
 # ====================================
-# AIGC-Identification-Toolkit Docker配置
+# AIGC-Watermark-Toolkit Docker配置
 # 多模态水印Benchmark系统
 # ====================================
 

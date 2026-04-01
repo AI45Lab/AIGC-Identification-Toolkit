@@ -189,7 +189,7 @@ class UnifiedWatermarkEngine:
         """获取视频水印处理器"""
         if self._video_watermark is None:
             from ..video_watermark.video_watermark import create_video_watermark
-            self._video_watermark = create_video_watermark()
+            self._video_watermark = create_video_watermark(config_path=self.config_path)
         return self._video_watermark
     
     def embed(self, content: str, message: str, modality: str, operation: str = 'watermark', **kwargs) -> Any:

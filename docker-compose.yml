@@ -7,7 +7,7 @@ services:
   # ====================================
   toolkit:
     container_name: aigc-watermark-toolkit
-    image: millionmillionli/aigc-identification-toolkit:latest
+    image: millionmillionli/aigc-watermark-toolkit:latest
 
     # ====================================
     # GPU支持（NVIDIA Docker）

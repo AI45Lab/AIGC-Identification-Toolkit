@@ -1,6 +1,6 @@
 # 环境配置指南
 
-本指南说明如何配置AIGC Identification Toolkit的运行环境，包括模型缓存路径、离线模式和跨平台支持。
+本指南说明如何配置AIGC Watermark Toolkit的运行环境，包括模型缓存路径、离线模式和跨平台支持。
 
 ## 目录
 

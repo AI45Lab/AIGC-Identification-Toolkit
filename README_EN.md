@@ -52,6 +52,7 @@ This project provides an all-in-one open-source identification toolkit. Supporti
 
 ## 📑 Table of Contents
 
+- [Demo](#demo)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
 - [Usage](#usage)
@@ -59,6 +60,40 @@ This project provides an all-in-one open-source identification toolkit. Supporti
   - [Image-Bench](#image-bench)
   - [Audio-Bench](#audio-bench)
   - [Video-Bench](#video-bench)
+
+---
+
+## 🎬 Demo
+
+### Image Watermarking Effect
+
+<table>
+  <tr>
+    <th align="center">Original Image</th>
+    <th align="center">Hidden Watermark Image</th>
+    <th align="center">Visible Mark Image</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/assets/demo/original_image.png" width="260"/></td>
+    <td align="center"><img src="docs/assets/demo/watermarked_image.png" width="260"/></td>
+    <td align="center"><img src="docs/assets/demo/visible_marked_image.png" width="260"/></td>
+  </tr>
+</table>
+
+### Video Watermarking Effect
+
+<table>
+  <tr>
+    <th align="center">Original Video</th>
+    <th align="center">Hidden Watermark Video</th>
+    <th align="center">Visible Mark Video</th>
+  </tr>
+  <tr>
+    <td align="center"><video src="docs/assets/demo/original_video.mp4" width="260" controls></video></td>
+    <td align="center"><video src="docs/assets/demo/watermarked_video.mp4" width="260" controls></video></td>
+    <td align="center"><video src="docs/assets/demo/visible_marked_video.mp4" width="260" controls></video></td>
+  </tr>
+</table>
 
 ---
 
@@ -71,8 +106,8 @@ This project provides an all-in-one open-source identification toolkit. Supporti
 1. Clone the repository
 
    ```bash
-   git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Identification-Toolkit.git
-   cd AIGC-Identification-Toolkit
+   git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Watermark-Toolkit.git
+   cd AIGC-Watermark-Toolkit
    ```
 
 2. Install core dependencies
@@ -119,7 +154,7 @@ This project provides an all-in-one open-source identification toolkit. Supporti
 
 1. Pull the image
    ```bash
-   docker pull millionmillionli/aigc-identification-toolkit:latest
+   docker pull millionmillionli/aigc-watermark-toolkit:latest
    ```
 
 2. Run the container
@@ -132,7 +167,7 @@ This project provides an all-in-one open-source identification toolkit. Supporti
      -e PYTHONPATH=/app \
      -e CUDA_VISIBLE_DEVICES=0 \
      --restart unless-stopped \
-     millionmillionli/aigc-identification-toolkit:latest \
+     millionmillionli/aigc-watermark-toolkit:latest \
      tail -f /dev/null
    ```
 

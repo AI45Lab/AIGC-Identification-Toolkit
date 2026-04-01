@@ -219,7 +219,7 @@ sudo docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi
 │   │   └── ...
 │   └── transformers/            # 👈 Transformers缓存
 │
-└── AIGC-Identification-Toolkit/ # 👈 项目根目录
+└── AIGC-Watermark-Toolkit/ # 👈 项目根目录
     ├── config/                  # 👈 配置文件
     │   └── default_config.yaml  # 统一配置文件
     ├── src/                     # 👈 源代码
@@ -290,8 +290,8 @@ environment:
 
 ```bash
 cd /fs-computility/wangxuhong/limeilin/
-git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Identification-Toolkit.git
-cd AIGC-Identification-Toolkit
+git clone --recurse-submodules https://github.com/MillionMillionLi/AIGC-Watermark-Toolkit.git
+cd AIGC-Watermark-Toolkit
 ```
 
 > 💡 `--recurse-submodules` 会自动克隆VINE和AudioMarkBench子模块
