@@ -89,9 +89,9 @@
     <th align="center" width="34%">显式标识视频</th>
   </tr>
   <tr>
-    <td align="center"><video src="docs/demo/original_video.mp4" width="100%" controls></video></td>
-    <td align="center"><video src="docs/demo/watermarked_video.mp4" width="100%" controls></video></td>
-    <td align="center"><video src="docs/demo/visible_marked_video.mp4" width="100%" controls></video></td>
+    <td align="center"><img src="docs/demo/original_video.gif" width="100%"/></td>
+    <td align="center"><img src="docs/demo/watermarked_video.gif" width="100%"/></td>
+    <td align="center"><img src="docs/demo/visible_marked_video.gif" width="100%"/></td>
   </tr>
 </table>
 
