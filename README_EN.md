@@ -1,4 +1,4 @@
-# UniMark: Artificial Intelligence Generated Content Identification Toolkit
+# UniMark: Artificial Intelligence Generated Content Watermark Toolkit
 
 <div align="center">
   <!-- Project logo placeholder - logo image needed -->
@@ -7,10 +7,10 @@
   </a> -->
 
 
-  <h3 align="center">UniMark: Artificial Intelligence Generated Content Identification Toolkit</h3>
+  <h3 align="center">UniMark: Artificial Intelligence Generated Content Watermark Toolkit</h3>
 
   <p align="center">
-    An all-in-one open-source identification toolkit supporting explicit marking, implicit marking, and watermarking for text, image, audio, and video content
+    An all-in-one open-source Watermark toolkit supporting explicit marking, implicit marking, and watermarking for text, image, audio, and video content
     <br />
     <a href="#usage"><strong>Quick Start »</strong></a>
     <br />
@@ -29,7 +29,7 @@
 <!-- Project screenshot placeholder - web interface screenshot needed -->
 <!-- [![Product Screenshot][product-screenshot]](https://example.com) -->
 
-This project provides an all-in-one open-source identification toolkit. Supporting four major modalities (text, image, audio, and video), it features explicit marking and watermarking capabilities, covering the identification scope specified in the GB 45438-2025 standard "Information Security Technology - Artificial Intelligence Generated and Synthesized Content Identification Methods".
+This project provides an all-in-one open-source watermark toolkit. Supporting four major modalities (text, image, audio, and video), it features explicit marking and watermarking capabilities, covering the watermarking scope specified in the GB 45438-2025 standard "Information Security Technology - Artificial Intelligence Generated and Synthesized Content Watermarking Methods".
 
 
 > **Use Case**: This project served as the core training platform for the **Shanghai AI Security Special Training Course 2025 Short-term Class**, supporting teaching and practical exercises to help students master AIGC watermarking embedding and detection techniques.
@@ -37,7 +37,7 @@ This project provides an all-in-one open-source identification toolkit. Supporti
 ### Why Choose Us?
 
 - **Comprehensive Coverage**: Supports all identification methods required by GB 45438-2025 standard
-- **Multi-modal Support**: Unified processing of text, image, audio, and video content
+- **Multi-modal Support**: Unified processing of text, image, audio, and video content for watermark embedding and detection
 - **Dual-mode Operation**: Supports both AI content generation and existing file processing
 
 ### Built With
